@@ -70,11 +70,18 @@ class MainWindow(Qt.QMainWindow):
 
 	def initFilters(self):
 		filters = Qt.QListWidget()
+		filters.setFixedWidth(160)
 
-		filters.addItem("All")
-		filters.addItem("Installed")
-		filters.addItem("Not Installed")
-		filters.addItem("To Update")
+		filter_types = [
+			Qt.QListWidgetItem("All"),
+			Qt.QListWidgetItem("Installed"),
+			Qt.QListWidgetItem("Not Installed"),
+			Qt.QListWidgetItem("To Update")
+		]
+		for f in filter_types:
+			filters.addItem(f)
+
+		filters.setCurrentItem(filter_types[0])
 
 		return filters
 
