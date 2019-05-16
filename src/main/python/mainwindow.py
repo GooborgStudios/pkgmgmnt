@@ -20,6 +20,8 @@ class MainWindow(Qt.QMainWindow):
 
 		self.resize(1024, 768)
 
+		self.actions = self.__initActions()
+
 		self.toolbar = self.__initToolbar()
 		self.statusBar = self.__initStatusBar()
 
@@ -39,6 +41,21 @@ class MainWindow(Qt.QMainWindow):
 
 		self.show()
 
+	def __initActions(self):
+		actions = {}
+
+		exitAct = Qt.QAction('Exit', self)
+		exitAct.setShortcut('Ctrl+Q')
+		exitAct.triggered.connect(Qt.qApp.quit)
+		actions['exit'] = exitAct
+
+		openAct = Qt.QAction(QIcon('./src/main/icons/base/64.png'), 'Open', self)
+		openAct.setShortcut('Ctrl+O')
+		openAct.triggered.connect(Qt.qApp.quit)
+		actions['open'] = openAct
+
+		return actions
+
 	def __initToolbar(self):
 		toolbar = self.addToolBar('')
 		toolbar.setMovable(False)
@@ -48,12 +65,9 @@ class MainWindow(Qt.QMainWindow):
 		toolbar.addWidget(pkgmanager)
 		pkgmanager.insertItems(1, ["Homebrew", "Pip", "Apt"])
 
-		exitAct = Qt.QAction(QIcon('./src/main/icons/base/64.png'), 'Exit', self)
-		exitAct.setShortcut('Ctrl+Q')
-		exitAct.triggered.connect(Qt.qApp.quit)
-		toolbar.addAction(exitAct)
+		# toolbar.addAction(self.actions['exit'])
 
-		toolbar.addSeparator()
+		# toolbar.addSeparator()
 
 		spacer = Qt.QWidget()
 		spacer.setSizePolicy(Qt.QSizePolicy.Expanding, Qt.QSizePolicy.Minimum)
