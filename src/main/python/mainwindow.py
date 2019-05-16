@@ -124,9 +124,9 @@ class MainWindow(Qt.QMainWindow):
 		header = ['', '', 'Name', 'Version', 'Latest']
 		# a list of (fname, lname, age, weight) tuples
 		dataList = [
-			[Qt.QCheckBox(""), 1, 'python', '3.7.3', '3.7.3'],
-			[Qt.QCheckBox(""), 2, 'ruby', '2.5.5', '2.6.3'],
-			[Qt.QCheckBox(""), 0, 'zsh', '', '5.7.1'],
+			[Qt.QCheckBox(""), '', 'python', '3.7.3', '3.7.3'],
+			[Qt.QCheckBox(""), '', 'ruby', '2.5.5', '2.6.3'],
+			[Qt.QCheckBox(""), '', 'zsh', '', '5.7.1'],
 		]
 
 		model = PkgTable(dataList, header)
