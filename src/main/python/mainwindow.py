@@ -9,9 +9,12 @@ from PyQt5.QtGui import QIcon
 
 from pkgtable import PkgTable
 
+accepted_managers = ["Apt", "Homebrew", "Pip"]
+
 class MainWindow(Qt.QMainWindow):
 	def __init__(self):
 		super().__init__()
+		self.packagemanager = 'Homebrew'
 		self.__initUI()
 
 	def __initUI(self):
@@ -64,7 +67,9 @@ class MainWindow(Qt.QMainWindow):
 
 		pkgmanager = Qt.QComboBox()
 		toolbar.addWidget(pkgmanager)
-		pkgmanager.insertItems(1, ["Homebrew", "Pip", "Apt"])
+		pkgmanager.insertItems(1, accepted_managers)
+
+		pkgmanager.setCurrentIndex(accepted_managers.index(self.packagemanager))
 
 		# toolbar.addAction(self.actions['exit'])
 
