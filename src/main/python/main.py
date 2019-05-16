@@ -17,7 +17,7 @@ class MainWindow(Qt.QMainWindow):
 		self.initUI()
 
 	def initUI(self):
-		self.resize(400, 300)
+		self.resize(1024, 768)
 		self.setWindowTitle('Package Manager - Gooborg Studios')
 
 		self.toolbar = self.initToolbar()
