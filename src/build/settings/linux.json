@@ -1,6 +1,6 @@
 {
 	"categories": "Utility;",
-	"description": "",
+	"description": "A cross-platform package manager GUI written in PyQt5 for Homebrew, Apt, Pip, and NPM.",
 	"author_email": "info@gooborg.com",
 	"url": "https://www.gooborg.com"
 }
