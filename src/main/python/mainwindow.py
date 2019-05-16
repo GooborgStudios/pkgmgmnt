@@ -112,4 +112,7 @@ class MainWindow(Qt.QMainWindow):
 		packageGrid.setSortingEnabled(True)
 		packageGrid.sortByColumn(2, QtCore.Qt.SortOrder.AscendingOrder)
 
+		packageGrid.resizeColumnToContents(0)
+		packageGrid.resizeColumnToContents(1)
+
 		return packageGrid
