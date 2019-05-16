@@ -26,10 +26,13 @@ class MainWindow(Qt.QMainWindow):
 		self.widget = Qt.QWidget()
 		self.setCentralWidget(self.widget)
 		self.layout = Qt.QHBoxLayout()
+		self.layout.setSpacing(0)
+		self.layout.setContentsMargins(0,0,0,0)
 		self.widget.setLayout(self.layout)
 
 		self.filters = self.initFilters()
 		self.layout.addWidget(self.filters, 1)
+		self.filters.setFocus(3)
 
 		self.packageGrid = self.initPackageGrid()
 		self.layout.addWidget(self.packageGrid, 2)
