@@ -9,6 +9,11 @@ pkgmgmnt is a graphical interface for various package managers across all operat
 ## Is this a brand new package manager?
 No, pkgmgmnt is an extension on your existing package manager, designed to help you spend less time writing commands, and more time writing code.  pkgmgmnt works with Homebrew, Apt, Pip, and NPM.
 
+## How do I run it?
+First off, you'll need Python 3, PyQt5, and FBS.  Python 3 can be installed through your favorite package manager (`brew install python`, `sudo apt install python3`, etc.) or via [download from python.org](https://www.python.org/downloads/).  Once downloaded, you can run `python3 -m pip install pyqt5 fbs` in the terminal to download the latest PyQt5 and FBS versions.
+
+You can then run the program by going to the root of this repository and running `fbs run` in the terminal.  To package and bundle an app, run `fbs freeze` and then `fbs installer`.
+
 ## How can I help?
 Contributions are always welcome!  Like most repositories, a good start is to look through the issues tab and see what's available.  Or, if you want to work on something that's never been filed as an issue, simply submit a pull request.
 
