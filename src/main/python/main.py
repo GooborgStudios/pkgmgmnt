@@ -6,12 +6,12 @@
 import sys
 
 from fbs_runtime.application_context import ApplicationContext
-from PyQt5.QtWidgets import qApp, QMainWindow, QWidget, QHBoxLayout, QAction, QComboBox, QLineEdit, QListWidget, QTableView
+from PyQt5 import QtWidgets as Qt
 from PyQt5.QtGui import QIcon
 
 appctxt = ApplicationContext()
 
-class MainWindow(QMainWindow):
+class MainWindow(Qt.QMainWindow):
 	def __init__(self):
 		super().__init__()
 		self.initUI()
@@ -25,9 +25,9 @@ class MainWindow(QMainWindow):
 
 		self.toolbar = self.initToolbar()
 
-		self.widget = QWidget()
+		self.widget = Qt.QWidget()
 		self.setCentralWidget(self.widget)
-		self.layout = QHBoxLayout()
+		self.layout = Qt.QHBoxLayout()
 		self.widget.setLayout(self.layout)
 
 		self.filters = self.initFilters()
@@ -41,25 +41,25 @@ class MainWindow(QMainWindow):
 	def initToolbar(self):
 		toolbar = self.addToolBar('')
 
-		exitAct = QAction(QIcon('./src/main/icons/base/32.png'), 'Exit', self)
+		pkgmanager = Qt.QComboBox()
+		toolbar.addWidget(pkgmanager)
+		pkgmanager.insertItems(1, ["Homebrew", "Pip", "Apt"])
+
+		exitAct = Qt.QAction(QIcon('./src/main/icons/base/32.png'), 'Exit', self)
 		exitAct.setShortcut('Ctrl+Q')
-		exitAct.triggered.connect(qApp.quit)
+		exitAct.triggered.connect(Qt.qApp.quit)
 		toolbar.addAction(exitAct)
 
 		toolbar.addSeparator()
 
-		combo = QComboBox()
-		toolbar.addWidget(combo)
-		combo.insertItems(1, ["Homebrew", "Pip", "Apt"])
-
-		search = QLineEdit()
-		toolbar.addWidget(search)
-		search.setMaximumWidth(120)
+		searchbar = Qt.QLineEdit()
+		toolbar.addWidget(searchbar)
+		searchbar.setFixedWidth(120)
 
 		return toolbar
 
 	def initFilters(self):
-		filters = QListWidget()
+		filters = Qt.QListWidget()
 
 		filters.addItem("All")
 		filters.addItem("Installed")
@@ -69,7 +69,7 @@ class MainWindow(QMainWindow):
 		return filters
 
 	def initPackageGrid(self):
-		packageGrid = QTableView()
+		packageGrid = Qt.QTableView()
 
 		return packageGrid
 
