@@ -82,7 +82,7 @@ class MainWindow(Qt.QMainWindow):
 
 	def __initStatusBar(self):
 		statusBar = self.statusBar()
-		statusBar.showMessage('Ready')
+		statusBar.showMessage('PRE-ALPHA DEVELOPMENT VERSION')
 		statusBar.setContentsMargins(8, 0, 8, 0)
 
 		progress = Qt.QProgressBar()
