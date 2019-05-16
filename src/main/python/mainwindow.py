@@ -110,5 +110,6 @@ class MainWindow(Qt.QMainWindow):
 
 		packageGrid.setModel(model)
 		packageGrid.setSortingEnabled(True)
+		packageGrid.sortByColumn(2, QtCore.Qt.SortOrder.AscendingOrder)
 
 		return packageGrid
