@@ -24,6 +24,7 @@ class MainWindow(Qt.QMainWindow):
 
 		self.toolbar = self.__initToolbar()
 		self.statusBar = self.__initStatusBar()
+		self.menubar = self.__initMenubar()
 
 		self.widget = Qt.QWidget()
 		self.setCentralWidget(self.widget)
@@ -91,6 +92,14 @@ class MainWindow(Qt.QMainWindow):
 		statusBar.addPermanentWidget(progress)
 
 		return statusBar
+
+	def __initMenubar(self):
+		menubar = self.menuBar()
+		fileMenu = menubar.addMenu('&File')
+		fileMenu.addAction(self.actions['exit'])
+		fileMenu.addAction(self.actions['open'])
+
+		return menubar
 
 	def __initFilters(self):
 		filters = Qt.QListWidget()
