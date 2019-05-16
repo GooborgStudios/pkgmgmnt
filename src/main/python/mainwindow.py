@@ -7,6 +7,8 @@ from PyQt5 import QtCore
 from PyQt5 import QtWidgets as Qt
 from PyQt5.QtGui import QIcon
 
+from pkgtable import PkgTable
+
 class MainWindow(Qt.QMainWindow):
 	def __init__(self):
 		super().__init__()
@@ -95,5 +97,18 @@ class MainWindow(Qt.QMainWindow):
 
 	def __initPackageGrid(self):
 		packageGrid = Qt.QTableView()
+
+		header = ['', '', 'Name', 'Version', 'Latest']
+		# a list of (fname, lname, age, weight) tuples
+		dataList = [
+			[Qt.QCheckBox(""), 1, 'python', '3.7.3', '3.7.3'],
+			[Qt.QCheckBox(""), 2, 'ruby', '2.5.5', '2.6.3'],
+			[Qt.QCheckBox(""), 0, 'zsh', '', '5.7.1'],
+		]
+
+		model = PkgTable(dataList, header)
+
+		packageGrid.setModel(model)
+		packageGrid.setSortingEnabled(True)
 
 		return packageGrid
