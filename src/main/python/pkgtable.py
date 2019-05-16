@@ -3,6 +3,8 @@
 # pkgmgmnt: pkgtable.py
 # Copyright (c) 2019, Gooborg Studios.  All rights reserved.
 
+import operator
+
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets as Qt
 
