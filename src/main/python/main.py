@@ -6,6 +6,7 @@
 import sys
 
 from fbs_runtime.application_context import ApplicationContext
+from PyQt5 import QtCore
 from PyQt5 import QtWidgets as Qt
 from PyQt5.QtGui import QIcon
 
@@ -17,8 +18,10 @@ class MainWindow(Qt.QMainWindow):
 		self.initUI()
 
 	def initUI(self):
-		self.resize(1024, 768)
+		self.setUnifiedTitleAndToolBarOnMac(True)
 		self.setWindowTitle('Package Manager - Gooborg Studios')
+
+		self.resize(1024, 768)
 
 		self.toolbar = self.initToolbar()
 		self.statusbar = self.initStatusbar()
@@ -32,7 +35,7 @@ class MainWindow(Qt.QMainWindow):
 
 		self.filters = self.initFilters()
 		self.layout.addWidget(self.filters, 1)
-		self.filters.setFocus(3)
+		self.filters.setFocus(QtCore.Qt.FocusReason.ActiveWindowFocusReason)
 
 		self.packageGrid = self.initPackageGrid()
 		self.layout.addWidget(self.packageGrid, 2)
@@ -41,6 +44,8 @@ class MainWindow(Qt.QMainWindow):
 
 	def initToolbar(self):
 		toolbar = self.addToolBar('')
+		toolbar.setMovable(False)
+		toolbar.setContentsMargins(8, 0, 8, 0)
 
 		pkgmanager = Qt.QComboBox()
 		toolbar.addWidget(pkgmanager)
@@ -53,6 +58,10 @@ class MainWindow(Qt.QMainWindow):
 
 		toolbar.addSeparator()
 
+		spacer = Qt.QWidget()
+		spacer.setSizePolicy(Qt.QSizePolicy.Expanding, Qt.QSizePolicy.Minimum)
+		toolbar.addWidget(spacer)
+
 		searchbar = Qt.QLineEdit()
 		toolbar.addWidget(searchbar)
 		searchbar.setFixedWidth(120)
@@ -62,6 +71,7 @@ class MainWindow(Qt.QMainWindow):
 	def initStatusbar(self):
 		statusbar = self.statusBar()
 		statusbar.showMessage('Ready')
+		statusbar.setContentsMargins(8, 0, 8, 0)
 
 		progress = Qt.QProgressBar()
 		progress.setFixedWidth(120)
