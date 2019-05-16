@@ -20,10 +20,8 @@ class MainWindow(Qt.QMainWindow):
 		self.resize(400, 300)
 		self.setWindowTitle('Package Manager - Gooborg Studios')
 
-		self.statusbar = self.statusBar()
-		self.statusbar.showMessage('Initialized!')
-
 		self.toolbar = self.initToolbar()
+		self.statusbar = self.initStatusbar()
 
 		self.widget = Qt.QWidget()
 		self.setCentralWidget(self.widget)
@@ -57,6 +55,18 @@ class MainWindow(Qt.QMainWindow):
 		searchbar.setFixedWidth(120)
 
 		return toolbar
+
+	def initStatusbar(self):
+		statusbar = self.statusBar()
+		statusbar.showMessage('Ready')
+
+		progress = Qt.QProgressBar()
+		progress.setFixedWidth(120)
+		progress.setValue(0)
+
+		statusbar.addPermanentWidget(progress)
+
+		return statusbar
 
 	def initFilters(self):
 		filters = Qt.QListWidget()
