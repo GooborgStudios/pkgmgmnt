@@ -13,6 +13,7 @@ from PyQt5.QtGui import QIcon
 from mainwindow import MainWindow
 
 appctxt = ApplicationContext()
+appctxt.app.setAttribute(QtCore.Qt.ApplicationAttribute.AA_DontShowIconsInMenus)
 window = MainWindow()
 exit_code = appctxt.app.exec_()
 sys.exit(exit_code)
