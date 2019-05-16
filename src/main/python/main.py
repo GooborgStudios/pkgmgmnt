@@ -43,7 +43,7 @@ class MainWindow(Qt.QMainWindow):
 		toolbar.addWidget(pkgmanager)
 		pkgmanager.insertItems(1, ["Homebrew", "Pip", "Apt"])
 
-		exitAct = Qt.QAction(QIcon('./src/main/icons/base/32.png'), 'Exit', self)
+		exitAct = Qt.QAction(QIcon('./src/main/icons/base/64.png'), 'Exit', self)
 		exitAct.setShortcut('Ctrl+Q')
 		exitAct.triggered.connect(Qt.qApp.quit)
 		toolbar.addAction(exitAct)
