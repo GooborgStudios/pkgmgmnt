@@ -11,6 +11,7 @@ from PyQt5 import QtWidgets as Qt
 from PyQt5.QtGui import QIcon
 
 from pkgtable import PkgTable
+import pkgmanagers
 
 accepted_managers = ["Apt", "Homebrew", "Pip"]
 
