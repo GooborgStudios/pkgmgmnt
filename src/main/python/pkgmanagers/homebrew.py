@@ -13,7 +13,11 @@ class Homebrew(PackageManager):
 		self.update()
 
 	def update(self):
-		pass # raise AttributeError("Abstract method was not overwritten by child class")
+		# XXX This is pseudo-data for testing purposes.  Provide real data later.
+		
+		self._addpackage(Package(self, 'python', '3.7.3', '3.7.3'))
+		self._addpackage(Package(self, 'ruby', '2.5.5', '2.6.3'))
+		self._addpackage(Package(self, 'zsh', '', '5.7.1'))
 
 	def install(self, pkg):
 		raise AttributeError("Abstract method was not overwritten by child class")
