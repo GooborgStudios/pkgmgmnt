@@ -11,31 +11,31 @@ class PackageManager:
 		self.name = "ABSTRACT" # To be overwritten by child
 		self.packages = {}
 
-	def update():
+	def update(self):
 		"""
 		This function updates the list of packages, as well as the package manager if needed.
 		"""
 		raise AttributeError("Abstract method was not overwritten by child class")
 
-	def install(pkg):
+	def install(self, pkg):
 		"""
 		This function installs a specified package, including all of its dependencies, if not already installed.
 		"""
 		raise AttributeError("Abstract method was not overwritten by child class")
 
-	def uninstall(pkg):
+	def uninstall(self, pkg):
 		"""
 		This function uninstalls a specified package if it's installed.
 		"""
 		raise AttributeError("Abstract method was not overwritten by child class")
 
-	def upgrade(pkg):
+	def upgrade(self, pkg):
 		"""
 		This function upgrades a specified package if it's installed, including dependencies if needed.
 		"""
 		raise AttributeError("Abstract method was not overwritten by child class")
 
-	def firstaid():
+	def firstaid(self):
 		"""
 		This function includes a series of commands to perform basic cleanup and fix common issues within the package manager.
 		"""
