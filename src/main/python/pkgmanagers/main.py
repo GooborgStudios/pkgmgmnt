@@ -41,6 +41,13 @@ class PackageManager:
 		"""
 		raise AttributeError("Abstract method was not overwritten by child class")
 
+	def _addpackage(self, pkg):
+		"""
+		This function is designed to add a package into the packages dictionary.
+		"""
+
+		self.packages[pkg.name] = pkg
+
 class Package:
 	def __init__(self, manager, name, version, installed_version, dependencies = [], description = "", url = ""):
 		self.name = name
