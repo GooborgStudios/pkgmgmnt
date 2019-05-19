@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# pkgmgmnt: pkgmanagerclass.py
+# pkgmgmnt: pkgmanagers/main.py
 # Copyright (c) 2019, Gooborg Studios.  All rights reserved.
 
 class PackageManager:
