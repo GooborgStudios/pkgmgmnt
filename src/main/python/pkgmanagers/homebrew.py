@@ -9,8 +9,10 @@ class Homebrew(PackageManager):
 	def __init__(self):
 		self.name = "Homebrew"
 
+		self.update()
+
 	def update(self):
-		raise AttributeError("Abstract method was not overwritten by child class")
+		pass # raise AttributeError("Abstract method was not overwritten by child class")
 
 	def install(self, pkg):
 		raise AttributeError("Abstract method was not overwritten by child class")
