@@ -7,6 +7,7 @@ from .main import *
 
 class Homebrew(PackageManager):
 	def __init__(self):
+		super().__init__()
 		self.name = "Homebrew"
 
 		self.update()
