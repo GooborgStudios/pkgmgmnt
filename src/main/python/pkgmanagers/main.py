@@ -58,4 +58,4 @@ class Package:
 		self.description = description
 		self.url = url
 
-		self.status = "Not Installed" if not installed_version or "Outdated" if installed_version != version or "Installed"
+		self.status = "Not Installed" if not installed_version else "Outdated" if installed_version != version else "Installed"
