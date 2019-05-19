@@ -42,10 +42,13 @@ class PackageManager:
 		raise AttributeError("Abstract method was not overwritten by child class")
 
 class Package:
-	def __init__(self, manager, name, version):
+	def __init__(self, manager, name, version, installed_version, dependencies = [], description = "", url = ""):
 		self.name = name
 		self.version = version
+		self.installed_version = installed_version
 		self.manager = manager
-		self.dependencies = []
-		self.description = ""
-		self.url = ""
+		self.dependencies = dependencies
+		self.description = description
+		self.url = url
+
+		self.status = "Not Installed" if not installed_version or "Outdated" if installed_version != version or "Installed"
