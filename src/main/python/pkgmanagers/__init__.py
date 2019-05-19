@@ -3,6 +3,8 @@
 # pkgmgmnt: pkgmanagers/__init__.py
 # Copyright (c) 2019, Gooborg Studios.  All rights reserved.
 
-from . import *
+from .main import *
 
-managers = []
+from .homebrew import Homebrew
+
+managers = [Homebrew()]
