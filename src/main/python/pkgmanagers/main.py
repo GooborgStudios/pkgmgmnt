@@ -40,3 +40,12 @@ class PackageManager:
 		This function includes a series of commands to perform basic cleanup and fix common issues within the package manager.
 		"""
 		raise AttributeError("Abstract method was not overwritten by child class")
+
+class Package:
+	def __init__(self, manager, name, version):
+		self.name = name
+		self.version = version
+		self.manager = manager
+		self.dependencies = []
+		self.description = ""
+		self.url = ""
