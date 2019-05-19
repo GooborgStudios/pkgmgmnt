@@ -128,17 +128,8 @@ class MainWindow(Qt.QMainWindow):
 	def __initPackageGrid(self):
 		packageGrid = Qt.QTableView()
 
-		header = ['', '', 'Name', 'Version', 'Latest']
-		# a list of (fname, lname, age, weight) tuples
-		dataList = [
-			[Qt.QCheckBox(""), '', 'python', '3.7.3', '3.7.3'],
-			[Qt.QCheckBox(""), '', 'ruby', '2.5.5', '2.6.3'],
-			[Qt.QCheckBox(""), '', 'zsh', '', '5.7.1'],
-		]
+		self.__updatePackageGrid(packageGrid)
 
-		model = PkgTable(dataList, header)
-
-		packageGrid.setModel(model)
 		packageGrid.setSortingEnabled(True)
 		packageGrid.sortByColumn(2, QtCore.Qt.SortOrder.AscendingOrder)
 
@@ -146,6 +137,11 @@ class MainWindow(Qt.QMainWindow):
 		packageGrid.resizeColumnToContents(1)
 
 		return packageGrid
+
+	def __updatePackageGrid(self, packageGrid):
+		header = ['', 'Status', 'Name', 'Version', 'Installed']
+		model = PkgTable([[Qt.QCheckBox(""), pkg.status, pkg.name, pkg.version, pkg.installed_version] for pkgname, pkg in self.packagemanager.packages.items()], header)
+		packageGrid.setModel(model)
 
 appctxt = ApplicationContext()
 appctxt.app.setAttribute(QtCore.Qt.ApplicationAttribute.AA_DontShowIconsInMenus)
