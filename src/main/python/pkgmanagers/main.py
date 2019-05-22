@@ -9,6 +9,7 @@ class PackageManager:
 	"""
 	def __init__(self):
 		self.name = "ABSTRACT" # To be overwritten by child
+		self.version = None
 		self.packages = {}
 
 	def update(self):
