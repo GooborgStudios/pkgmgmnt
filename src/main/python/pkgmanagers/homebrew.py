@@ -3,7 +3,7 @@
 # pkgmgmnt: pkgmanagers/homebrew.py
 # Copyright (c) 2019, Gooborg Studios.  All rights reserved.
 
-import subprocess
+import subprocess, os
 
 from config import Config
 
@@ -16,11 +16,18 @@ class Homebrew(PackageManager):
 		self.cache_dir = self.app_config.create_data_dir(self.name)
 
 		try:
-			brew_config = subprocess.run(['brew', 'config'], capture_output=True)
-			config_data = brew_config.stdout.split(b'\n')
+			config_path = os.path.join(self.cache_dir, 'homebrew_config.txt')
+			if not os.path.exists(config_path):
+				brew_config = subprocess.run(['brew', 'config'], capture_output=True)
+				with open(config_path, 'w') as file:
+					file.write(brew_config.stdout.decode('utf-8', 'ignore'))
+
+			config = open(config_path, 'r').read()
+
+			config_data = config.split('\n')
 			for c in config_data:
 				try:
-					k, v = c.decode('utf-8', 'ignore').split(": ", 1)
+					k, v = c.split(": ", 1)
 				except ValueError:
 					continue
 
@@ -32,7 +39,7 @@ class Homebrew(PackageManager):
 			self.version = None
 			self.core_tap_head = None
 
-		self.update()
+		self.update() # XXX Remove me
 
 	def update(self):
 		# package_info = subprocess.run(['brew', 'info', '--all', '--json'], capture_output=True)
