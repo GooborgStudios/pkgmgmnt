@@ -10,6 +10,7 @@ from PyQt5 import QtCore
 from PyQt5 import QtWidgets as Qt
 from PyQt5.QtGui import QIcon
 
+import config
 from pkgtable import PkgTable
 import pkgmanagers
 
@@ -145,6 +146,7 @@ class MainWindow(Qt.QMainWindow):
 
 appctxt = ApplicationContext()
 appctxt.app.setAttribute(QtCore.Qt.ApplicationAttribute.AA_DontShowIconsInMenus)
+app_config = config.Config('pkgmgmnt')
 window = MainWindow()
 exit_code = appctxt.app.exec_()
 sys.exit(exit_code)
