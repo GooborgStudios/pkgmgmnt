@@ -29,3 +29,5 @@ class Config():
 		full_path = os.path.join(self.DATA_PATH, *args)
 		if not os.path.exists(full_path):
 			os.makedirs(full_path)
+
+		return full_path
