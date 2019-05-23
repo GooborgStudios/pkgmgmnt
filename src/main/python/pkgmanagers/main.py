@@ -7,8 +7,8 @@ class PackageManager:
 	"""
 	The PackageManager class is an abstract class to be overwritten by a child class, containing all the basic variables and methods.
 	"""
-	def __init__(self, app_config):
-		self.name = "ABSTRACT" # To be overwritten by child
+	def __init__(self, name, app_config):
+		self.name = name
 		self.version = None
 
 		self.app_config = app_config

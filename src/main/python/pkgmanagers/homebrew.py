@@ -11,8 +11,7 @@ from .main import *
 
 class Homebrew(PackageManager):
 	def __init__(self, app_config):
-		super().__init__(app_config)
-		self.name = "Homebrew"
+		super().__init__("Homebrew", app_config)
 
 		try:
 			brew_config = subprocess.run(['brew', 'config'], capture_output=True)
