@@ -13,6 +13,8 @@ class Homebrew(PackageManager):
 	def __init__(self, app_config):
 		super().__init__("Homebrew", app_config)
 
+		self.cache_dir = self.app_config.create_data_dir(self.name)
+
 		try:
 			brew_config = subprocess.run(['brew', 'config'], capture_output=True)
 			config_data = brew_config.stdout.split(b'\n')
