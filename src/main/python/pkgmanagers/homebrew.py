@@ -32,9 +32,6 @@ class Homebrew(PackageManager):
 			self.version = None
 			self.core_tap_head = None
 
-		print("Homebrew Version: {0}".format(self.version))
-		print("Core Tap Head: {0}".format(self.core_tap_head))
-
 		self.update()
 
 	def update(self):
