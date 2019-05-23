@@ -7,4 +7,4 @@ from .main import *
 
 from .homebrew import Homebrew
 
-managers = [Homebrew()]
+managers = [Homebrew]

@@ -17,7 +17,8 @@ import pkgmanagers
 class MainWindow(Qt.QMainWindow):
 	def __init__(self):
 		super().__init__()
-		self.packagemanager = pkgmanagers.managers[0]
+		self.managers = [m(app_config) for m in pkgmanagers.managers]
+		self.packagemanager = self.managers[0]
 		self.__initUI()
 
 	def __initUI(self):
@@ -70,9 +71,9 @@ class MainWindow(Qt.QMainWindow):
 
 		pkgmanager = Qt.QComboBox()
 		toolbar.addWidget(pkgmanager)
-		pkgmanager.insertItems(1, [m.name for m in pkgmanagers.managers])
+		pkgmanager.insertItems(1, [m.name for m in self.managers])
 
-		pkgmanager.setCurrentIndex(pkgmanagers.managers.index(self.packagemanager))
+		pkgmanager.setCurrentIndex(self.managers.index(self.packagemanager))
 
 		# toolbar.addAction(self.actions['exit'])
 
