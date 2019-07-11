@@ -3,11 +3,22 @@
 # pkgmgmnt: pkgmanagers/homebrew.py
 # Copyright (c) 2019, Gooborg Studios.  All rights reserved.
 
-import subprocess, os
+import subprocess, os, json
 
 from config import Config
 
 from .main import *
+
+class HomebrewPackage(Package):
+	@classmethod
+	def from_dictionary(cls, dictionary, manager):
+		version = ''
+		installed = dictionary['installed']
+		if installed:
+			version = installed[0]['version']
+
+		self = cls(manager, dictionary['name'], dictionary['versions']['stable'], version)
+		return self
 
 class Homebrew(PackageManager):
 	def __init__(self, app_config):
