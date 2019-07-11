@@ -44,11 +44,16 @@ class Homebrew(PackageManager):
 	def update(self):
 		# package_info = subprocess.run(['brew', 'info', '--all', '--json'], capture_output=True)
 
+		package_list = subprocess.run(['brew', 'search'], capture_output=True)
+
+		for package in package_list.stdout.decode().split('\n'):
+			if package: self._addpackage(Package(self, package, '', ''))
+
 		# XXX This is pseudo-data for testing purposes.  Provide real data later.
 		
-		self._addpackage(Package(self, 'python', '3.7.3', '3.7.3'))
-		self._addpackage(Package(self, 'ruby', '2.6.3', '2.5.5'))
-		self._addpackage(Package(self, 'zsh', '5.7.1', ''))
+		# self._addpackage(Package(self, 'python', '3.7.3', '3.7.3'))
+		# self._addpackage(Package(self, 'ruby', '2.6.3', '2.5.5'))
+		# self._addpackage(Package(self, 'zsh', '5.7.1', ''))
 
 	def install(self, pkg):
 		raise AttributeError("Abstract method was not overwritten by child class")
