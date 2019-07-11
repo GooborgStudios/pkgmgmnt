@@ -5,7 +5,7 @@
 
 import sys
 
-from fbs_runtime.application_context import ApplicationContext
+from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5 import QtCore
 from PyQt5 import QtWidgets as Qt
 from PyQt5.QtGui import QIcon
